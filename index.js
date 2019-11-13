@@ -38,8 +38,9 @@ var users = require('./api/models/users/usersModel');
 
 
 
-
-
+app.get('/',function(req,res,next){
+    res.json({message:"working"});
+})
 const routes = require('./api/routes/router');
 app.use('/',routes);
 
