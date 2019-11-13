@@ -1,12 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 //PORT
 var port = process.env.PORT || 3000;
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+//CORS
+app.use(cors());
 
 
 //Data Base
@@ -28,8 +33,19 @@ mongoose.connect(dbConfig.url, {
 });
 
 
+//Schema
+var users = require('./api/models/users/usersModel');
+
+
+
+
+
 const routes = require('./api/routes/router');
 app.use('/',routes);
+
+
+
+
 
 
 
