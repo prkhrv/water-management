@@ -15,12 +15,13 @@ exports.create_a_user = function(req,res,next){
         user_name:req.body.user_name,
         password:hashedPassword,
         email:req.body.email,
+        address:req.body.address,
         phone:req.body.phone
     },function(err,users){
         if(err){
             res.send(err);
         }else{
-            res.json({message:"user created"});
+            res.json({task:true,message:"user created"});
         }
     });
 };
